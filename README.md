@@ -1,0 +1,3 @@
+# AndroidDataBindingSample
+
+这是第一个databinding学习实例
