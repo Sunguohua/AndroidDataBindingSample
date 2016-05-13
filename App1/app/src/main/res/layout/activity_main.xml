@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.freshipper.app1.databinding.data.User" />
+        <import type="com.freshipper.app1.utils.MyStringUtils" />
+        <import type="com.freshipper.app1.databinding.event.MainActivityHandler" />
+        <import type="android.view.View"/>
+        <variable name="user" type="User" />
+        <variable name="handler" type="MainActivityHandler" />
+
+    </data>
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.freshipper.app1.MainActivity">
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{MyStringUtils.capitalize(user.firstName)}" />
+
+        <TextView
+            android:id="@+id/displayName"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.displayName != null ? user.displayName : user.lastName}"
+            android:visibility="@{user.isAdult ? View.VISIBLE : View.GONE}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="click"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@+id/displayName"
+            android:onClick="@{handler.onClick}"/>
+
+    </RelativeLayout>
+</layout>
